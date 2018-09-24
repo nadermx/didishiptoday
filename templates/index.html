@@ -16,30 +16,21 @@
 </head>
 <body>
 {% block content %}
- <div class="jumbotron text-center">
-  <h1>Did I Ship Today?</h1>
-  <p>Resize this responsive page to see the effect!</p>
+
+<div class="container text-center">
+    <h1>Did I Ship Today?</h1>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6">
+                <button type="button" class="btn btn-block btn-primary">YES</button>
+            </div>
+            <div class="col-sm-6">
+                <button type="button" class="btn btn-block btn-primary">NO</button>
+            </div>
+        </div>
+    </div>
 </div>
 
-<div class="container">
-  <div class="row">
-    <div class="col-sm-4">
-      <h3>Column 1</h3>
-      <p>Lorem ipsum dolor..</p>
-      <p>Ut enim ad..</p>
-    </div>
-    <div class="col-sm-4">
-      <h3>Column 2</h3>
-      <p>Lorem ipsum dolor..</p>
-      <p>Ut enim ad..</p>
-    </div>
-    <div class="col-sm-4">
-      <h3>Column 3</h3>
-      <p>Lorem ipsum dolor..</p>
-      <p>Ut enim ad..</p>
-    </div>
-  </div>
-</div>
 {% endblock %}
 {% block scripts %}
 <script type="text/javascript" src="/static/jquery/dist/jquery.min.js"></script>

@@ -1,6 +1,6 @@
 from pony.orm import *
 from passlib.hash import bcrypt_sha256
-from flask_login import UserMixin
+from flask_login import UserMixin, AnonymousUserMixin
 from datetime import datetime
 
 db = Database()
@@ -22,9 +22,18 @@ class User(UserMixin, db.Entity):
     def verify_password(self, password):
         return bcrypt_sha256.verify(password, self.password_hash)
 
+    @property
+    def is_authenticated(self):
+        """Return True if the user is authenticated."""
+        if isinstance(self, AnonymousUserMixin):
+            return False
+        else:
+            return True
+
 class Ship(db.Entity):
     user = Optional(lambda: User)
     yes = Optional(bool)
     no = Optional(bool)
+    dt_shipped = Optional(datetime, default=datetime.utcnow)
 
 sql_debug(False)

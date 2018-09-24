@@ -1,5 +1,5 @@
 from flask import Flask, render_template
-from flask_login import LoginManager
+from flask_login import LoginManager, current_user
 from pony.orm import *
 import models
 
@@ -19,7 +19,11 @@ def unauthorized():
 
 @app.route('/yes', methods=['POST'])
 def yes():
-
+    if current_user.is_authenticated:
+        print('yes')
+    else:
+        print('no')
+    # shipped = models.select(s for s in models.Shipped)
     return render_template('yes.html')
 
 @app.route('/no', methods=['POST'])

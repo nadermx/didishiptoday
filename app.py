@@ -33,7 +33,7 @@ def yes():
             models.Ship(yes=True, dt_shipped=datetime.utcnow())
     today_utc = datetime.utcnow().replace(hour=0, minute=0, second=0, microsecond=0)
     shipped = models.select(s for s in models.Ship if s.dt_shipped > today_utc)
-    return render_template('yes.html', shipped=shipped)
+    return render_template('yes.html', shipped=shipped, total=shipped.count())
 
 @app.route('/no', methods=['POST'])
 def no():

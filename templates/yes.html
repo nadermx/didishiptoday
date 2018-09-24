@@ -5,7 +5,15 @@
 {% endblock %}
 {% block content %}
 <div class="container-fluid content text-center"><h1>YES</h1></div>
+{% set shipped = 0 %}
+{% set noshipped = 0 %}
 {% for s in shipped %}
-    {{s.yes}} {{s.no}}
+    {% if s.yes %}
+        {% shipped =+ 1 %}
+    {% endif %}
+
+    {% if s.no %}
+        {% noshipped =+ 1 %}
+    {% endif %}
 {% endfor %}
 {% endblock %}

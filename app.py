@@ -2,6 +2,7 @@ from flask import Flask, render_template
 from flask_login import LoginManager, current_user
 from pony.orm import *
 import models
+from datetime import datetime
 
 app = Flask(__name__)
 app.config.from_object('config')
@@ -20,11 +21,12 @@ def unauthorized():
 @app.route('/yes', methods=['POST'])
 def yes():
     if current_user.is_authenticated:
-        print('yes')
+        models.Ship(yes=True, user=models.User[current_user.id], dt_shipped=datetime.utcnow)
     else:
-        print('no')
-    # shipped = models.select(s for s in models.Shipped)
-    return render_template('yes.html')
+        models.Ship(yes=True, dt_shipped=datetime.utcnow())
+    today_utc = datetime.utcnow().replace(hour=0, minute=0, second=0, microsecond=0)
+    shipped = models.select(s for s in models.Ship if s.dt_shipped > today_utc)
+    return render_template('yes.html', shipped=shipped)
 
 @app.route('/no', methods=['POST'])
 def no():

@@ -1,4 +1,3 @@
-
 {% extends "index.html" %}
 {% block head%}
 <title>{% block title %}YES - Did I Ship Today?{% endblock %}</title>
@@ -6,4 +5,7 @@
 {% endblock %}
 {% block content %}
 <div class="container-fluid content text-center"><h1>YES</h1></div>
+{% for s in shipped %}
+    {{s.yes}} {{s.no}}
+{% endfor %}
 {% endblock %}

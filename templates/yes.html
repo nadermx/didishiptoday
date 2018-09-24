@@ -4,16 +4,13 @@
 <meta name="description" content="You shipped!">
 {% endblock %}
 {% block content %}
-<div class="container-fluid content text-center"><h1>YES</h1></div>
-{% set shipped = 0 %}
-{% set noshipped = 0 %}
-{% for s in shipped %}
-    {% if s.yes %}
-        {% shipped =+ 1 %}
-    {% endif %}
+<div class="container-fluid content text-center">
+    <h1>YES</h1>
+    <h2>{{ yes }} Humans have shipped today</h2>
+    <h3>Out of {{ shipped }} which means that  {{ percent }} are shipping today!</h2>
+</div>
 
-    {% if s.no %}
-        {% noshipped =+ 1 %}
-    {% endif %}
-{% endfor %}
+{{ shipped }}
+{{ yes }}
+{{ no }}
 {% endblock %}

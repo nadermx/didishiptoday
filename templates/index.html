@@ -10,15 +10,40 @@
     <title>{% block title %}Did I Ship Today?{% endblock %}</title>
     <meta name="description" content="The site that some how found a way to be shipped">
     {% endblock %}
-    <link rel="stylesheet" href="/static/styles/bootstrap.min.css">
-    <link rel="stylesheet" href="/static/styles/font-awesome.min.css">
-    <link rel="stylesheet" href="/static/styles/main.css?version={{ version }}">
+    <link rel="stylesheet" href="/static/bootstrap/dist/css/bootstrap.min.css">
     {% block css %}
     {% endblock %}
 </head>
 <body>
 {% block content %}
-<h1>Did I Ship Today?</h1>
+ <div class="jumbotron text-center">
+  <h1>Did I Ship Today?</h1>
+  <p>Resize this responsive page to see the effect!</p>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-4">
+      <h3>Column 1</h3>
+      <p>Lorem ipsum dolor..</p>
+      <p>Ut enim ad..</p>
+    </div>
+    <div class="col-sm-4">
+      <h3>Column 2</h3>
+      <p>Lorem ipsum dolor..</p>
+      <p>Ut enim ad..</p>
+    </div>
+    <div class="col-sm-4">
+      <h3>Column 3</h3>
+      <p>Lorem ipsum dolor..</p>
+      <p>Ut enim ad..</p>
+    </div>
+  </div>
+</div>
+{% endblock %}
+{% block scripts %}
+<script type="text/javascript" src="/static/jquery/dist/jquery.min.js"></script>
+<script type="text/javascript" src="/static/bootstrap/dist/js/bootstrap.min.js"></script>
 {% endblock %}
 </body>
 </html>
